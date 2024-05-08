@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro xD</title>
+
+    <style>
+        *{
+    font-family: sans-serif;
+}
+body{
+    background-color: rgb(37, 197, 184);
+
+}
+
+h1{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.cadastro{
+    background-color: white;
+    width: 40vw;
+   
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: start;
+    align-items: left;
+    box-sizing: content-box;
+    padding: 20px;
+
+}
+
+
+
+label{
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+input{
+    height: 30px;
+    border: 1px solid rgb(165, 172, 171);
+}
+
+.botao{
+    margin-top: 30px;
+    height: 30px;
+    font-size: 16px;
+   background-color: darkcyan;
+   color: white;
+    
+}
+
+.botao:hover{
+    box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.5);
+    
+ 
+}
+
+ .errosUsuarioLetras, .errosUsuarioTamanho,  .errosSenha, .errosRepetir, .errosVazio {
+    background-color: lightcoral;
+    display: none;
+    
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="formulario">
+            <form action="" class="cadastro">
+                <h1 style="align-self: center;">Cadastro</h1>
+
+                <div class="errosUsuarioLetras">O nome de usuário somente poderá conter Letras e/ou Números.</div>
+                <div class="errosUsuarioTamanho">O nome de usuário deve ter entre 3 a 12 caracteres.</div>
+                <div class="errosVazio">TODOS os campos devem ser preenchidos xD</div>
+
+                <div class="errosSenha">A senha deve ter entre 6 a 12 caracteres</div>
+                <div class="errosRepetir">As senhas devem coincidir.</div>
+
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome..." class="in">
+
+                <label for="Sobrenome">Sobrenome:</label>
+                <input type="text" id="Sobrenome" placeholder="Digite seu sobrenome..." class="in">
+
+                <label for="Usuário">Usuário:</label>
+                <input type="text" id="Usuário" placeholder="Digite seu nome de usuário.." class="in">
+
+                <label for="Senha">Senha:</label>
+                <input type="text" id="Senha" placeholder="Digite sua senha..." class="in">
+
+                <label for="RepetirSenha">Repetir Senha:</label>
+                <input type="text" id="RepetirSenha" placeholder="Digite sua senha..." class="in">
+                <button type="submit" class="botao">Cadastre-se</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script >
+
+    /* 
+  -  Nenhum campo pode estar vazio
+  -  Usuário deverá ter entre 3 e 12 caracteres
+  -  Senha precisa ter entre 6 e 12 caracteres
+
+
+*/
+
+
+const formulario = document.querySelector('body');
+const botao = document.querySelector('.botao');
+
+const errosUsuarioTamanho = document.querySelector('.errosUsuarioTamanho');
+const errosSenha = document.querySelector('.errosSenha');
+const errosRepetir = document.querySelector('.errosRepetir');
+const errosVazio = document.querySelector('.errosVazio');
+
+const inputNome = document.getElementById('nome');
+const inputSobrenome = document.getElementById('Sobrenome');
+const inputUsuario = document.getElementById('Usuário');
+const inputSenha = document.getElementById('Senha');
+const inputRepetirSenha = document.getElementById('RepetirSenha');
+const todosInput = document.querySelectorAll('.in');
+
+botao.addEventListener('click', function(e){
+    e.preventDefault();
+    console.log('Deu certo');
+    errosUsuarioTamanho.style.display = 'none';
+    errosSenha.style.display = 'none';
+    errosRepetir.style.display = 'none';
+    errosVazio.style.display = 'none';
+
+    if(inputNome.value.length < 3 || inputNome.value.lentgh > 12){
+    errosUsuarioTamanho.style.display = 'block';
+    }
+ 
+    if(inputSenha.value.length < 6 || inputSenha.value.length > 12){
+        errosSenha.style.display = 'block';
+    }
+
+
+
+    if(inputSenha.value !== inputRepetirSenha.value){
+        errosRepetir.style.display = 'block';
+    }
+
+    for(let inp of todosInput){
+        if(inp.value === ''){
+            errosVazio.style.display = 'block';
+        }
+    }
+
+
+
+})
+</script>
+
+</html>
